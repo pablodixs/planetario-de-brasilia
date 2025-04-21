@@ -10,7 +10,7 @@ export function Hero() {
                 className="absolute top-0 left-0 w-full h-full object-cover z-0"
                 muted
                 autoPlay={true}
-                loop
+                loop={true}
                 src="https://videos.pexels.com/video-files/856857/856857-uhd_2732_1440_30fps.mp4"
             ></video>
         </section>

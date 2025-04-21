@@ -2,8 +2,8 @@ import { Hero } from '@/components/Hero'
 import Image from 'next/image'
 
 import logo from '@/assets/images/logo.svg'
-import Link from 'next/link'
 import { GovHeader } from '@/components/GovHeader'
+import { Navbar } from '@/components/Navbar'
 
 export default function Home() {
     return (
@@ -17,13 +17,7 @@ export default function Home() {
                             alt="Planetário de Brasília"
                             draggable={false}
                         />
-                        <nav className="flex gap-12">
-                            <Link href={'#'}>Sobre</Link>
-                            <Link href={'#'}>Programação</Link>
-                            <Link href={'#'}>Atrações</Link>
-                            <Link href={'#'}>Contato</Link>
-                            <Link href={'#'}>Agende uma visita</Link>
-                        </nav>
+                        <Navbar />
                     </div>
                 </header>
                 <Hero />

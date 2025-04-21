@@ -2,9 +2,14 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import {
+    PersonArmsSpread,
+    CaretDown,
+    ArrowUpRight,
+} from '@phosphor-icons/react'
 
 export function GovHeader() {
-    const [isMenuExpanded, setIsMenuExpanded] = useState<boolean>(false)
+    const [isMenuExpanded, setIsMenuExpanded] = useState(false)
 
     return (
         <section className="border-b border-neutral-900 py-2">
@@ -16,23 +21,28 @@ export function GovHeader() {
                     Secretaria de Ciência, Tecnologia e Inovação
                 </Link>
                 <div className="flex gap-10">
+                    <button className="hover:text-white transition-all flex items-center gap-1">
+                        Acessibilidade
+                        <PersonArmsSpread size={'1.125rem'} />
+                    </button>
                     <button
-                        className="hover:text-white transition-all cursor-pointer"
+                        className="hover:text-white transition-all flex items-center gap-1"
                         onClick={() => setIsMenuExpanded(!isMenuExpanded)}
                     >
-                        {isMenuExpanded ? 'Mostrar menos' : 'Mostrar mais'}
+                        Mais
+                        <CaretDown
+                            className={`${
+                                isMenuExpanded ? 'rotate-180' : 'rotate-0'
+                            } transition-all`}
+                            size={'1.125rem'}
+                        />
                     </button>
                     <Link
-                        className="hover:text-white transition-all"
-                        href={'#'}
-                    >
-                        Acessibilidade
-                    </Link>
-                    <Link
-                        className="hover:text-white transition-all"
+                        className="hover:text-white transition-all flex items-center gap-1"
                         href={'#'}
                     >
                         Portal do Governo do Distrito Federal
+                        <ArrowUpRight size={'1.125rem'} />
                     </Link>
                 </div>
             </div>
@@ -43,9 +53,7 @@ export function GovHeader() {
                     ${isMenuExpanded ? 'h-10' : 'h-0'} max-w-[1280px] mx-auto
                 `}
             >
-                <div className="pt-4">
-                    <h1>Menu</h1>
-                </div>
+                <h1>Menu</h1>
             </div>
         </section>
     )

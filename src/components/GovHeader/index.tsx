@@ -12,7 +12,7 @@ export function GovHeader() {
     const [isMenuExpanded, setIsMenuExpanded] = useState(false)
 
     return (
-        <section className="border-b border-neutral-900 py-2">
+        <section className="border-b border-neutral-900 bg-black py-2">
             <div className="flex justify-between items-center max-w-[1280px] mx-auto text-sm text-neutral-400">
                 <Link
                     className="font-semibold hover:text-white transition-all"

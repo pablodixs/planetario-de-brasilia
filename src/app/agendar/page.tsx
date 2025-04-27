@@ -7,7 +7,7 @@ import { GroupSizeHandler } from './components/GroupSizeHandler'
 import { TypeToggleSelector } from './components/TypeToggleSelector'
 import { ErrorMessagesCallout } from './components/ErrorMessagesCallout'
 import { Container } from '@/components/Container'
-import { Hexagon, UsersThree } from '@phosphor-icons/react/dist/ssr'
+import { CaretLeft, Hexagon, UsersThree } from '@phosphor-icons/react/dist/ssr'
 
 export default function Agendar() {
     const [groupType, setGroupType] = useState<string>('')
@@ -28,7 +28,10 @@ export default function Agendar() {
                 </h1>
                 {currentStep === 1 && (
                     <>
-                        <TypeToggleSelector setGroupType={setGroupType} />
+                        <TypeToggleSelector
+                            currentValue={groupType}
+                            setGroupType={setGroupType}
+                        />
                         {groupType && (
                             <GroupSizeHandler
                                 groupSize={groupSize}
@@ -56,7 +59,7 @@ export default function Agendar() {
                                 Nome completo
                             </label>
                             <input
-                                className="rounded-lg border border-neutral-800 w-full px-4 py-2 mb-4"
+                                className="rounded-lg border border-neutral-800 w-full px-4 py-2 mb-4 hover:border-neutral-500 focus:border-white focus:outline-none transition-all"
                                 type="text"
                                 placeholder="Seu nome completo"
                             />
@@ -67,10 +70,29 @@ export default function Agendar() {
                                 E-mail
                             </label>
                             <input
-                                className="rounded-lg border border-neutral-800 w-full px-4 py-2 mb-4"
-                                type="text"
+                                className="rounded-lg border border-neutral-800 w-full px-4 py-2 mb-4 hover:border-neutral-500 focus:border-white focus:outline-none transition-all"
+                                type="email"
                                 placeholder="Seu e-mail"
                             />
+                            {groupType === 'grupo2' && (
+                                <div>
+                                    <label
+                                        htmlFor=""
+                                        className="mb-1 block text-sm text-neutral-400"
+                                    >
+                                        Nome da instituição de ensino
+                                    </label>
+                                    <input
+                                        className="rounded-lg border border-neutral-800 w-full px-4 py-2 mb-4 hover:border-neutral-500 focus:border-white focus:outline-none transition-all"
+                                        type="text"
+                                        placeholder="Nome da instituição de ensino"
+                                    />
+                                </div>
+                            )}
+                            <p className="text-sm text-neutral-400">
+                                Ao continuar você aceita nossos Termos de Uso e
+                                a Política de Privacidade.
+                            </p>
                         </form>
                     </div>
                 )}
@@ -94,13 +116,25 @@ export default function Agendar() {
                                 </span>
                             </div>
                         </div>
-                        <button
-                            onClick={() => setCurrentStep(currentStep + 1)}
-                            disabled={disableNextButton}
-                            className="bg-white text-black text-lg rounded-lg py-2 px-6 mt-4 hover:bg-neutral-700 hover:text-white transition-all flex items-center justify-center gap-2 font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
-                        >
-                            Continuar <CaretRight weight="bold" size={20} />
-                        </button>
+                        <div className="flex gap-4">
+                            {currentStep > 1 && (
+                                <button
+                                    onClick={() =>
+                                        setCurrentStep(currentStep - 1)
+                                    }
+                                    className="bg-transparent text-neutral-400 text-lg rounded-lg py-2 px-6 hover:bg-neutral-700 hover:text-white transition-all flex items-center justify-center gap-2 font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
+                                >
+                                    <CaretLeft weight="bold" size={20} /> Voltar
+                                </button>
+                            )}
+                            <button
+                                onClick={() => setCurrentStep(currentStep + 1)}
+                                disabled={disableNextButton}
+                                className="bg-white text-black text-lg rounded-lg py-2 px-6 hover:bg-neutral-700 hover:text-white transition-all flex items-center justify-center gap-2 font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-black"
+                            >
+                                Continuar <CaretRight weight="bold" size={20} />
+                            </button>
+                        </div>
                     </Container>
                 </div>
             )}

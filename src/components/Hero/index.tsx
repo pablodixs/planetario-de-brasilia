@@ -16,9 +16,17 @@ export function Hero() {
                 <Header />
                 <div className="flex justify-center items-center h-full">
                     <motion.h1
-                        initial={{ translateY: '100%', opacity: 0 }}
-                        transition={{ duration: 0.75, delay: 0.5 }}
-                        animate={{ translateY: '-100%', opacity: 1 }}
+                        initial={{
+                            translateY: '100%',
+                            opacity: 0,
+                            filter: 'blur(20px)',
+                        }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        animate={{
+                            translateY: '-100%',
+                            opacity: 1,
+                            filter: 'blur(0px)',
+                        }}
                         className="text-neutral-100 text-[6rem] font-bold"
                     >
                         Uma viagem pelo espaço-tempo
@@ -26,12 +34,15 @@ export function Hero() {
                 </div>
             </section>
             <div className="absolute top-0 left-0 w-full h-full object-cover">
-                <video
+                <motion.video
+                    initial={{ opacity: 0, filter: 'blur(20px)' }}
+                    transition={{ duration: 0.75, delay: 1 }}
+                    animate={{ opacity: 1, filter: 'blur(0px)' }}
                     muted
                     autoPlay
                     loop={true}
                     src="/videos/nebulosa.mp4"
-                ></video>
+                ></motion.video>
             </div>
         </motion.section>
     )

@@ -3,6 +3,7 @@
 import { motion } from 'motion/react'
 import { useState } from 'react'
 import {
+    CalendarBlank,
     CaretLeft,
     CaretRight,
     Hexagon,
@@ -167,6 +168,15 @@ export default function Agendar() {
                                         'Visita individual, familiar ou grupos de até 10 pessoas.'}
                                     {groupType === 'grupo2' &&
                                         'Visita de alunos de Instituições de Ensino ou grupos com mais de 10 pessoas.'}
+                                </span>
+                                <span className="text-neutral-300 flex items-center gap-2">
+                                    <CalendarBlank size={20} />{' '}
+                                    {selectedDate.toLocaleDateString('pt-BR', {
+                                        day: '2-digit',
+                                        month: '2-digit',
+                                        year: 'numeric',
+                                    })}
+                                    {time && ` às ${time}`}
                                 </span>
                             </div>
                         </div>

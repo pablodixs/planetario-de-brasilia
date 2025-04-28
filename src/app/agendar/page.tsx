@@ -42,7 +42,7 @@ export default function Agendar() {
 
     return (
         <>
-            <div>
+            <div className='mb-[8rem]'>
                 <h1 className="font-medium text-neutral-300 mb-1">
                     Agendar visita ao Planetário
                 </h1>

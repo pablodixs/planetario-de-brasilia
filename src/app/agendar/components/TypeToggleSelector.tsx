@@ -4,16 +4,23 @@ import { ToggleGroup, ToggleItem } from '@/components/ToggleGroup'
 import { Dispatch } from 'react'
 
 interface TypeToggleSelectorProps {
+    currentValue?: string
     setGroupType: Dispatch<React.SetStateAction<string>>
 }
 
-export function TypeToggleSelector({ setGroupType }: TypeToggleSelectorProps) {
+export function TypeToggleSelector({
+    setGroupType,
+    currentValue,
+}: TypeToggleSelectorProps) {
     return (
         <section>
             <h1 className="font-bold text-2xl mb-4">
                 Escolha o tipo de visita
             </h1>
-            <ToggleGroup onValueChange={(value) => setGroupType(value)}>
+            <ToggleGroup
+                value={currentValue}
+                onValueChange={(value) => setGroupType(value)}
+            >
                 <ToggleItem
                     title="Pessoa física"
                     description="Visita individual, familiar ou grupos de até 10 pessoas."

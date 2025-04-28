@@ -1,13 +1,19 @@
 'use client'
 
+import { motion } from 'motion/react'
 import { useState } from 'react'
-import { CaretRight } from '@phosphor-icons/react'
+import {
+    CaretLeft,
+    CaretRight,
+    Hexagon,
+    UsersThree,
+} from '@phosphor-icons/react/dist/ssr'
+
+import { Container } from '@/components/Container'
 
 import { GroupSizeHandler } from './components/GroupSizeHandler'
 import { TypeToggleSelector } from './components/TypeToggleSelector'
 import { ErrorMessagesCallout } from './components/ErrorMessagesCallout'
-import { Container } from '@/components/Container'
-import { CaretLeft, Hexagon, UsersThree } from '@phosphor-icons/react/dist/ssr'
 
 export default function Agendar() {
     const [groupType, setGroupType] = useState<string>('')
@@ -98,7 +104,12 @@ export default function Agendar() {
                 )}
             </div>
             {groupType && (
-                <div className="fixed bottom-0 left-0 w-full py-8 border-t border-neutral-800 bg-neutral-900/70 backdrop-blur-lg z-50">
+                <motion.div
+                    initial={{ translateY: '100%' }}
+                    animate={{ translateY: '0' }}
+                    transition={{ bounceDamping: 0 }}
+                    className="fixed bottom-0 left-0 w-full py-8 border-t border-neutral-800 bg-neutral-900/70 backdrop-blur-lg z-50"
+                >
                     <Container className="flex justify-between items-center">
                         <div>
                             <h2 className="font-medium">Resumo</h2>
@@ -136,7 +147,7 @@ export default function Agendar() {
                             </button>
                         </div>
                     </Container>
-                </div>
+                </motion.div>
             )}
         </>
     )

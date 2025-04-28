@@ -1,3 +1,6 @@
+'use client'
+
+import { motion } from 'motion/react'
 import { Minus, Plus } from '@phosphor-icons/react/dist/ssr'
 import { Dispatch } from 'react'
 
@@ -10,7 +13,11 @@ export function GroupSizeHandler({
     groupSize,
 }: GroupSizeHandlerProps) {
     return (
-        <section className="mt-6">
+        <motion.section
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-6"
+        >
             <h2 className="font-bold text-2xl">Quantidade de pessoas</h2>
             <div className="flex items-center justify-between gap-4 mt-4 border p-4 rounded-lg border-neutral-800">
                 <button
@@ -31,6 +38,6 @@ export function GroupSizeHandler({
                     <Plus />
                 </button>
             </div>
-        </section>
+        </motion.section>
     )
 }

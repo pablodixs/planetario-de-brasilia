@@ -13,7 +13,7 @@ export function Header({ showNavbar = true, smallLogo = false }: HeaderProps) {
     return (
         <>
             <GovHeader />
-            <section>
+            <section className="z-[1000] bg-linear-180 from-black/50 to-black/0">
                 <header>
                     <div className="flex justify-between items-center py-4 max-w-[1280px] mx-auto">
                         <Image

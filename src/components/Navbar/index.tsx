@@ -9,7 +9,7 @@ export function Navbar() {
             <NavbarLink href={'#'}>Atrações</NavbarLink>
             <NavbarLink href={'#'}>Contato</NavbarLink>
             <Link
-                className="px-3 py-2 bg-white/10 hover:bg-white hover:text-black rounded-md transition-all font-semibold"
+                className="px-3 py-2 bg-white/10 hover:bg-white hover:text-black rounded-md transition-all font-semibold backdrop-blur-lg"
                 href={'/agendar'}
             >
                 Agende uma visita

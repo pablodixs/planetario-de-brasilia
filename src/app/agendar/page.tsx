@@ -14,11 +14,24 @@ import { Container } from '@/components/Container'
 import { GroupSizeHandler } from './components/GroupSizeHandler'
 import { TypeToggleSelector } from './components/TypeToggleSelector'
 import { ErrorMessagesCallout } from './components/ErrorMessagesCallout'
+import { DatePicker } from '@/components/DatePicker'
+import { TimePicker } from '@/components/HourPicker'
 
 export default function Agendar() {
     const [groupType, setGroupType] = useState<string>('')
     const [groupSize, setGroupSize] = useState<number>(1)
     const [currentStep, setCurrentStep] = useState<number>(1)
+    const [selectedDate, setSelectedDate] = useState<Date>(new Date())
+    const [time, setTime] = useState<string>()
+
+    // // Exemplo de disponibilidade: só dias pares do mês disponíveis
+    // const disponibilidade = Array.from({ length: 31 }, (_, i) => {
+    //     const dia = i + 1
+    //     const date = new Date()
+    //     date.setDate(dia)
+    //     const iso = date.toISOString().split('T')[0]
+    //     return { date: iso, available: dia % 2 === 0 }
+    // })
 
     const disableNextButton =
         (groupType === 'grupo1' && groupSize > 10) ||
@@ -53,7 +66,11 @@ export default function Agendar() {
                     </>
                 )}
                 {currentStep === 2 && (
-                    <div className="w-full">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="w-full"
+                    >
                         <h1 className="font-bold text-2xl mb-4">
                             Informações do grupo
                         </h1>
@@ -100,7 +117,33 @@ export default function Agendar() {
                                 a Política de Privacidade.
                             </p>
                         </form>
-                    </div>
+                    </motion.div>
+                )}
+
+                {currentStep === 3 && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="w-full"
+                    >
+                        <h2 className="font-bold text-2xl">
+                            Selecione a data da visita
+                        </h2>
+                        <div className="flex justify-between mt-4 gap-[10%]">
+                            <DatePicker
+                                selectedDate={selectedDate}
+                                onDateChange={(d) => setSelectedDate(d)}
+                            />
+                            <div>
+                                {selectedDate && (
+                                    <TimePicker
+                                        selectedTime={time}
+                                        onTimeChange={setTime}
+                                    />
+                                )}
+                            </div>
+                        </div>
+                    </motion.div>
                 )}
             </div>
             {groupType && (
